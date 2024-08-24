@@ -93,13 +93,12 @@
             vertices[(3*i)-2]=(Math.random()*2)+7;;
           }else{
             vertices[(3*i)-2]-=speed[i];
-            console.log(speed[i]);
           }
         }
       }
       
       renderer.render(scene, camera);
-      /*console.log(vertices[1]);*/
+      console.log(vertices[28]);
       requestAnimationFrame(animate);
     }
     animate();
