@@ -96,12 +96,6 @@
           }
         }
       }
-      geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
-      material = THREE.PointsMaterial({
-        size: 0.01,
-        color: 0xffffff,
-      });
-      mesh = THREE.Points(geometry, material);
       renderer.render(scene, camera);
     }
     animate();
