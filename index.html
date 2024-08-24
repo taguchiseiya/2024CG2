@@ -55,43 +55,26 @@
     sphere.position.set(0,0,0);
     dumbbell.add(sphere);
     scene.add(sphere);
-
-    /*const SIZE=800;
+    
+    const SIZE=800;
     const LENGTH=100;
     const vertices=[];
-    for(let i=0;i<LENGTH;i++){
+    for(i=0;i<LENGTH;i++){
       const x=SIZE*(Math.random()-0.5);
-      const y=SIZE*(Math.random()-0.5);
+      const y=10;
       const z=SIZE*(Math.random()-0.5);
       vertices.push(x,y,z);
     }
     const geometry=new THREE.BufferGeometry();
     geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
-    const material = new THREE.PointsMaterial({
+    const snowmaterial = new THREE.PointsMaterial({
       size: 10,
       color: 0xffffff,
     });
-    const mesh=new THREE.Points(geometry,material);
-    scene.add(mesh);*/
+    const mesh = new THREE.Points(geometry, material);
+    scene.add(mesh);
     
-      
     function animate(){
-      const SIZE=800;
-      const snowLENGTH=100;
-      const vertices=[];
-      for(let i=0;i<snowLENGTH;i++){
-        const x=SIZE*(Math.random()-0.5);
-        const y=10;
-        const z=SIZE*(Math.random()-0.5);
-        vertices.push(x,y,z);
-        const geometry=new THREE.BufferGeometry();
-        geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
-        const snowmaterial = new THREE.PointsMaterial({
-        size: 5,
-        color: 0xffffff,
-        });
-      }
-    
       requestAnimationFrame(animate);
       controls.update();
       renderer.render(scene, camera);
