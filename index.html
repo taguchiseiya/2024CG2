@@ -65,7 +65,7 @@
       const y=(Math.random()*2)+7;
       const z=SIZE*(Math.random()-0.5);
       vertices.push(x,y,z);
-      speed[i]=0.001;
+      speed[i]=0.01;
     }
     console.log(speed[49]);
     const geometry=new THREE.BufferGeometry();
@@ -79,7 +79,7 @@
     console.log(vertices[1]);
     
     function animate(){
-      requestAnimationFrame(animate);
+      
       controls.update();
       for(let i=0;i<LENGTH-1;i++){
         vertices[(3*i)-2]=vertices[(3*i)-2]+speed[i];
@@ -98,15 +98,16 @@
         }
       }
       const geometry=new THREE.BufferGeometry();
-    geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
-    const material = new THREE.PointsMaterial({
-      size: 0.01,
-      color: 0xffffff,
-    });
-    const mesh = new THREE.Points(geometry, material);
-    scene.add(mesh);
+      geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
+      const material = new THREE.PointsMaterial({
+        size: 0.01,
+        color: 0xffffff,
+      });
+      const mesh = new THREE.Points(geometry, material);
+      scene.add(mesh);
       renderer.render(scene, camera);
       console.log(vertices[1]);
+      requestAnimationFrame(animate);
     }
     animate();
     
