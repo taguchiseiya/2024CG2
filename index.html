@@ -68,7 +68,7 @@
       const a=(((Math.random*4)+1)/100);
       speed.push(a)
     }
-    console.log(speed[499]);
+    console.log(speed[49]);
     const geometry=new THREE.BufferGeometry();
     geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
     const material = new THREE.PointsMaterial({
@@ -88,13 +88,13 @@
           if(vertices[1]==0){
             vertices[1]=0;
           }else{
-            vertices[1]=vertices[1]+speed[0];
+            vertices[1]+=speed[0];
           }
         }else{
           if(vertices[(3*i)-2]==0){
             vertices[(3*i)-2]=0;
           }else{
-            vertices[(3*i)-2]=vertices[(3*i)-2]+speed[i];
+            vertices[(3*i)-2]+=speed[i];
           }
         }
       }
