@@ -85,13 +85,13 @@
         vertices[(3*i)-2]=vertices[(3*i)-2]+speed[i];
         if(i==0){
           if(vertices[1]<=0){
-            vertices[1]=0;
+            vertices[1]=(Math.random()*2)+7;;
           }else{
             vertices[1]-=speed[0];
           }
         }else{
           if(vertices[(3*i)-2]<=0){
-            vertices[(3*i)-2]=0;
+            vertices[(3*i)-2]=(Math.random()*2)+7;;
           }else{
             vertices[(3*i)-2]-=speed[i];
           }
