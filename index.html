@@ -65,7 +65,7 @@
       const y=(Math.random()*2)+7;
       const z=SIZE*(Math.random()-0.5);
       vertices.push(x,y,z);
-      speed[i]=0.1;
+      speed[i]=0.001;
     }
     console.log(speed[49]);
     const geometry=new THREE.BufferGeometry();
@@ -87,13 +87,13 @@
           if(vertices[1]<=0){
             vertices[1]=0;
           }else{
-            vertices[1]+=speed[0];
+            vertices[1]-=speed[0];
           }
         }else{
           if(vertices[(3*i)-2]<=0){
             vertices[(3*i)-2]=0;
           }else{
-            vertices[(3*i)-2]+=speed[i];
+            vertices[(3*i)-2]-=speed[i];
           }
         }
       }
