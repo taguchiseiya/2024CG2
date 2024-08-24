@@ -65,9 +65,10 @@
       const y=(Math.random()*2)+7;
       const z=SIZE*(Math.random()-0.5);
       vertices.push(x,y,z);
-      const a=(((Math.random*4)+1)/10);
+      const a=(((Math.random*4)+1)/100);
       speed.push(a)
     }
+    console.log(verices[1]);
     const geometry=new THREE.BufferGeometry();
     geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
     const material = new THREE.PointsMaterial({
@@ -76,6 +77,7 @@
     });
     const mesh = new THREE.Points(geometry, material);
     scene.add(mesh);
+    console.log(verices[1]);
     
     function animate(){
       requestAnimationFrame(animate);
@@ -97,7 +99,7 @@
         }
       }
       renderer.render(scene, camera);
-      console.log(LENGTH);
+      console.log(verices[1]);
     }
     animate();
     
