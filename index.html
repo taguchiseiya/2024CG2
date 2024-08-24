@@ -81,6 +81,7 @@
       requestAnimationFrame(animate);
       controls.update();
       for(let i=0;i<LENGTH;i++){
+        vertices[(3*i)-2]=vertices[(3*i)-2]+speed[i];
         if(i==0){
           if(vertices[1]==0){
             vertices[1]=0;
