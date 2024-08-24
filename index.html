@@ -7,7 +7,7 @@
   <title>Demo</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/99/three.min.js"></script>
   <script src="https://unpkg.com/three@0.137.4/build/three.min.js"></script>
-  <script src="https://unpkg.com/three@0.137.4/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://threejs.org/examples/js/controls/OrbitControls.js"></script>
   <script type="importmap">
     {
       "imports":{
@@ -28,7 +28,7 @@
       renderer.setSize(width, height);
       document.body.appendChild(renderer.domElement);
       
-      var scene = new THREE.Scene();
+      const scene = new THREE.Scene();
       
       var directionalLight = new THREE.DirectionalLight(0xffffff);
       directionalLight.position.set(1, 1, 1);
@@ -36,9 +36,18 @@
     
       const dumbbell =new THREE.Object3D();
       
-      var camera = new THREE.PerspectiveCamera(90,width/height,1,1000);
-      camera.position.set(2, 2 , 5);
-      camera.lookAt(0, 0, 0);
+      const camera = new THREE.PerspectiveCamera(70,window.innerWidth/window.innerHeight,0.1,1000);
+      const renderer=new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth,window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+      camera.position.set(0, 0 , 5);
+
+
+      const controls=new THREE.OrbitControls(camera,renderer.domElement);
+      controls.enableDamping=true;
+      controls.dampingFactor=0.25;
+      controls.screenSpacePanning=false;
+      controls.maxPolarAngle=Math.PI/2;
 
       const gridHelper = new THREE.GridHelper(2,10); 
       scene.add(gridHelper);
@@ -51,9 +60,11 @@
       sphere.position.set(0,0,0);
       dumbbell.add(sphere);
       scene.add(sphere);
-      
-      renderer.render(scene, camera);
-      
+
+      function animate(){
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
       }
     window.addEventListener('DOMContentLoaded', init);
   </script>
