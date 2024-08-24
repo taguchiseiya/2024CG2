@@ -67,7 +67,7 @@
       vertices.push(x,y,z);
       speed[i]=0.01;
     }
-    console.log(speed[49]);
+    console.log(speed[1]);
     const geometry=new THREE.BufferGeometry();
     geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
     const material = new THREE.PointsMaterial({
@@ -99,7 +99,7 @@
       }
       
       renderer.render(scene, camera);
-      console.log(vertices[4]);
+      console.log(vertices[1]);
       requestAnimationFrame(animate);
     }
     animate();
