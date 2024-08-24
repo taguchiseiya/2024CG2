@@ -20,47 +20,67 @@
 
 <body>
   <script>
-      var width = 800,
-      height = 600;
+    var width = 800,
+    height = 600;
       
-      const scene = new THREE.Scene();
-      
-      var directionalLight = new THREE.DirectionalLight(0xffffff);
-      directionalLight.position.set(1, 1, 1);
-      scene.add(directionalLight);
+    const scene = new THREE.Scene();
     
-      const dumbbell =new THREE.Object3D();
+    var directionalLight = new THREE.DirectionalLight(0xffffff);
+    directionalLight.position.set(1, 1, 1);
+    scene.add(directionalLight);
+    
+    const dumbbell =new THREE.Object3D();
       
-      const camera = new THREE.PerspectiveCamera(70,width/height,0.1,1000);
-      const renderer=new THREE.WebGLRenderer();
-      renderer.setSize(width,height);
-      document.body.appendChild(renderer.domElement);
-      camera.position.set(0, 0 , 5);
+    const camera = new THREE.PerspectiveCamera(70,width/height,0.1,1000);
+    const renderer=new THREE.WebGLRenderer();
+    renderer.setSize(width,height);
+    document.body.appendChild(renderer.domElement);
+    camera.position.set(0, 0 , 5);
 
 
-      const controls=new THREE.OrbitControls(camera,renderer.domElement);
-      controls.enableDamping=true;
-      controls.dampingFactor=0.25;
-      controls.screenSpacePanning=false;
-      controls.maxPolarAngle=Math.PI/2;
+    const controls=new THREE.OrbitControls(camera,renderer.domElement);
+    controls.enableDamping=true;
+    controls.dampingFactor=0.25;
+    controls.screenSpacePanning=false;
+    controls.maxPolarAngle=Math.PI/2;
 
-      const gridHelper = new THREE.GridHelper(2,10); 
-      scene.add(gridHelper);
-      const axisHelper = new THREE.AxisHelper(2);
-      scene.add(axisHelper);
+    const gridHelper = new THREE.GridHelper(2,10); 
+    scene.add(gridHelper);
+    const axisHelper = new THREE.AxisHelper(2);
+    scene.add(axisHelper);
 
-      var sphereGeometry = new THREE.SphereGeometry(1,32,32);
-      var sphereMaterial = new THREE.MeshLambertMaterial({ color: 0xff0000 });
-      var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-      sphere.position.set(0,0,0);
-      dumbbell.add(sphere);
-      scene.add(sphere);
+    var sphereGeometry = new THREE.SphereGeometry(1,32,32);
+    var sphereMaterial = new THREE.MeshLambertMaterial({ color: 0xff0000 });
+    var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+    sphere.position.set(0,0,0);
+    dumbbell.add(sphere);
+    scene.add(sphere);
 
-      function animate(){
+    const SIZE=3000;
+    const LENGTH=1000;
+    const vertices=[];
+    for(let i=0;i<LENGTH;i++){
+      const x=SIZE*(Math.random()-0.5);
+      const y=SIZE*(Math.random()-0.5);
+      const z=SIZE*(Math.random()-0.5);
+
+      vertices.push(x,y,z);
+    }
+
+    const geometry=new THREE.BUfferGeometry();
+    geometry.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));
+    const material = new THREE.PointsMaterial({
+      size: 10,
+      color: 0xffffff,
+    });
+    const material=new THREE.Points(geometry,material);
+    scene.add(mesh);
+      
+    function animate(){
         requestAnimationFrame(animate);
         controls.update();
         renderer.render(scene, camera);
-      }
+    }
     animate();
     
   </script>
