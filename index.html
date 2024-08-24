@@ -57,13 +57,9 @@
     scene.add(sphere);
     
     const SIZE=20;
-    const LENGTH=5;
+    const LENGTH=500;
     const vertices=[];
-    
-    function animate(){
-      requestAnimationFrame(animate);
-      controls.update();
-      for(i=0;i<LENGTH;i++){
+    for(i=0;i<LENGTH;i++){
       const x=SIZE*(Math.random()-0.5);
       const y=(Math.random()*2)+7;
       const z=SIZE*(Math.random()-0.5);
@@ -77,6 +73,11 @@
     });
     const mesh = new THREE.Points(geometry, material);
     scene.add(mesh);
+    
+    function animate(){
+      requestAnimationFrame(animate);
+      controls.update();
+      
       renderer.render(scene, camera);
     }
     animate();
